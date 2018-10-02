@@ -1,6 +1,14 @@
 # Flutter demo
 
-###### Reference : https://dribbble.com/shots/3005605-Spending-App-Another-Exploration/attachments/628276
+###### Design courtesy : https://dribbble.com/shots/3005605-Spending-App-Another-Exploration/attachments/628276
+
+### Widgets
+    1.ListView
+    2.TabBar
+    3.BoxDecoration - For boxshadow & rounded Image
+
+
+
 
 
 

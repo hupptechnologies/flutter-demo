@@ -92,7 +92,7 @@ class HomeState extends State<Home> with TickerProviderStateMixin{
 
   Widget bottomApppBar(){
     return Container(
-
+      padding: EdgeInsets.symmetric(horizontal: 10.0),
       color: Colors.white,
       child: TabBar(
         isScrollable: false,
@@ -101,24 +101,23 @@ class HomeState extends State<Home> with TickerProviderStateMixin{
           labelColor: Colors.black,
           unselectedLabelColor: Colors.grey[500],
           indicatorSize: TabBarIndicatorSize.tab,
-          labelStyle: TextStyle(fontSize: 12.0,),
-
+          labelStyle: TextStyle(fontSize: 7.0,),
           tabs: [
             Tab(
               icon: Icon(Icons.dashboard),
-              text: "Dashboard",
+              text: "DASHBOARD",
             ),
             Tab(
               icon: Icon(Icons.search),
-              text: "Search",
+              text: "SEARCH",
             ),
             Tab(
               icon: Icon(Icons.account_circle),
-              text: "Profile",
+              text: "PROFILE",
             ),
             Tab(
               icon: Icon(Icons.notifications),
-              text: "Notification",
+              text: "NOTIFICATIONS",
             )
           ]
       ),
@@ -174,7 +173,7 @@ class HomeState extends State<Home> with TickerProviderStateMixin{
         ],
       ),
       body:TabBarView(
-            physics: new NeverScrollableScrollPhysics(),
+            physics: new NeverScrollableScrollPhysics(), // Not allow to scroll
             controller: _controller,
             children: <Widget>[
 
