@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import "Dash.dart";
+import 'CardDesign.dart';
 
 void main(){
   runApp(
@@ -17,49 +19,57 @@ class Home extends StatefulWidget{
   }
 }
 
-class Dash{
-  String img;
-  String name;
-  double price;
-  bool approved;
-}
 
-class HomeState extends State<Home> with SingleTickerProviderStateMixin{
+class HomeState extends State<Home> with TickerProviderStateMixin{
 
   TabController _controller;
-
+  TabController _childController;
   //Dummy Data
   List<Dash> dashList= [];
+  CardDesign cd  = new CardDesign();
+
   var list = [
       {
-      "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLb5mOUtzV0ObqBVuAURSvPAsC27148aFdKGc6e6Z_Z78vmMWf",
-        "name":"UberRide",
+      "img":"https://cdn.geekwire.com/wp-content/uploads/2016/07/uber_shutterstock_326732741-630x420.jpg",
+        "name":"Uber Ride",
+        "price":650.0,
+        "approved":true
+      },
+      {
+        "img":"https://ssmscdn.yp.ca/image/resize/bd725768-7ced-4803-a197-b606ae9bedf7/ypui-d-mp-pic-gal-lg/starbucks-other-10.jpg",
+        "name":"Starbucks",
+        "price":434.0,
+        "approved":false
+      },
+      {
+        "img":"https://audimediacenter-a.akamaihd.net/system/production/media/63323/images/9287124de49431059fcf4d5f8ccca35aa3681434/A186768_overfull.jpg?1529417131",
+        "name":"Audi Ride",
+        "price":25.0,
+        "approved":false
+      },
+      {
+        "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9Sw-7YciVOwp-HPt0_tsxxCCav6GQRX7MKz3QL8706IeDBNpO",
+        "name":"Flutter",
         "price":152.0,
         "approved":true
       },
       {
         "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLb5mOUtzV0ObqBVuAURSvPAsC27148aFdKGc6e6Z_Z78vmMWf",
-        "name":"UberRide",
+        "name":"Uber Ride",
+        "price":152.0,
+        "approved":false
+      },
+      {
+        "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9Sw-7YciVOwp-HPt0_tsxxCCav6GQRX7MKz3QL8706IeDBNpO",
+        "name":"Flutter",
         "price":152.0,
         "approved":true
       },
       {
         "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLb5mOUtzV0ObqBVuAURSvPAsC27148aFdKGc6e6Z_Z78vmMWf",
-        "name":"UberRide",
+        "name":"Uber Ride",
         "price":152.0,
-        "approved":true
-      },
-      {
-        "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLb5mOUtzV0ObqBVuAURSvPAsC27148aFdKGc6e6Z_Z78vmMWf",
-        "name":"UberRide",
-        "price":152.0,
-        "approved":true
-      },
-      {
-        "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLb5mOUtzV0ObqBVuAURSvPAsC27148aFdKGc6e6Z_Z78vmMWf",
-        "name":"UberRide",
-        "price":152.0,
-        "approved":true
+        "approved":false
       }
   ];
   @override
@@ -67,7 +77,9 @@ class HomeState extends State<Home> with SingleTickerProviderStateMixin{
     // TODO: implement initState
     super.initState();
     _controller = new TabController(length: 4, vsync: this,initialIndex: 0);
+    _childController = new TabController(length: 3, vsync: this,initialIndex: 0);
     dashList = [];
+    // Generate List
     for(var i=0; i<list.length; i++){
       Dash d = new Dash();
       d.img = list[i]["img"];
@@ -76,19 +88,21 @@ class HomeState extends State<Home> with SingleTickerProviderStateMixin{
       d.price = list[i]["price"];
       dashList.add(d);
     }
-    print(dashList.length);
   }
 
   Widget bottomApppBar(){
     return Container(
-      
+
       color: Colors.white,
       child: TabBar(
         isScrollable: false,
           controller: _controller,
           indicatorColor: Colors.white, //Active Tab
           labelColor: Colors.black,
-          unselectedLabelColor: Colors.grey,
+          unselectedLabelColor: Colors.grey[500],
+          indicatorSize: TabBarIndicatorSize.tab,
+          labelStyle: TextStyle(fontSize: 12.0,),
+
           tabs: [
             Tab(
               icon: Icon(Icons.dashboard),
@@ -111,97 +125,144 @@ class HomeState extends State<Home> with SingleTickerProviderStateMixin{
     );
   }
 
-  Widget customAppBar(){
+  // Convert Text into UpperCase
+  String convertUpper(str){
+    return str.toUpperCase();
+  }
+
+  Widget priceRender(double price){
+    var p = price.toString();
+    var first = p.substring(0,p.lastIndexOf("."));
+    var last = p.substring(p.lastIndexOf("."));
+    print("last ${last}");
+    print("First ${first}");
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      textBaseline: TextBaseline.ideographic,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
-        Container(
-            padding: EdgeInsets.all(8.0),
-            child: InkResponse(
-              onTap: (){
-                print("menu");
-              },
-              child: Icon(Icons.menu),
-            )
-        ),
-        Expanded(
-          child: Text(""),
-        ),
-        Container(
-            decoration: BoxDecoration(
-                color: Colors.yellow,
-                borderRadius: BorderRadius.circular(50.0)
-            ),
-            padding: EdgeInsets.all(8.0),
-            child: InkResponse(
-              onTap: (){
-                print("create");
-              },
-              child: Icon(Icons.add),
-            )
+        Text("₹ ${first}",style: TextStyle(color: Colors.white,fontSize: 29.0,letterSpacing: 3.0,fontWeight: FontWeight.w400)),
+        Padding(
+          padding: EdgeInsets.only(bottom: 2.0),
+          child: Text("${last}",style: TextStyle(color: Colors.white,fontSize: 18.0,letterSpacing: 1.0,fontWeight: FontWeight.w400)),
         )
       ],
     );
   }
 
-
-
+  TextStyle txtStly = TextStyle(fontWeight: FontWeight.w500,fontSize: 20.0);
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      bottomNavigationBar: bottomApppBar(),
+      bottomNavigationBar: SafeArea(child: bottomApppBar()),
+      appBar: AppBar(
+        elevation: 0.0,
+        leading: InkResponse(
+          onTap: (){},
+          child: Icon(Icons.menu),
+        ),
+        actions: <Widget>[
+          InkResponse(
+            onTap: (){},
+            child: Padding(
+              padding: EdgeInsets.only(right: 10.0),
+              child: Icon(Icons.search),
+            )
+          )
+        ],
+      ),
       body:TabBarView(
             physics: new NeverScrollableScrollPhysics(),
             controller: _controller,
             children: <Widget>[
+
               Container(
                   decoration:  BoxDecoration(
                       color: Colors.blue,
-//                    gradient: RadialGradient(colors: [
-//                      Colors.blue,
-//                      Colors.yellow
-//                    ])
                   ),
                   child: SafeArea(
-                      child:Column(
+                      child:ListView(
                         children: <Widget>[
-                          Container(
-                            height: 50.0,
-                            padding: EdgeInsets.symmetric(vertical: 5.0,horizontal: 10.0),
-                            child: customAppBar()
-                          ),
-                          SizedBox(height: 50.0,),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 25.0),
-                            child: Container(
-                              height: 50.0,
-                              decoration: BoxDecoration(
-                                color: Colors.blueAccent,
-                                borderRadius: BorderRadius.circular(50.0)
+                          Column(
+                            children: <Widget>[
+                              SizedBox(height: 15.0,),
+                              Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 25.0),
+                                  child: Container(
+                                      height: 50.0,
+                                      decoration: BoxDecoration(
+                                          color: Colors.blueAccent,
+                                          borderRadius: BorderRadius.circular(50.0)
+                                      ),
+                                      child: TabBar(
+                                          controller: _childController,
+                                          indicator: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.circular(50.0)
+                                          ),
+                                          labelColor: Colors.black,
+                                          unselectedLabelColor: Colors.white70,
+                                          labelStyle: TextStyle(fontWeight: FontWeight.w500),
+                                          tabs: [
+                                            Tab(
+                                              text: "MONTHLY",
+                                            ),
+                                            Tab(
+                                              text: "WEEKLY",
+                                            ),
+                                            Tab(
+                                              text: "DAILY",
+                                            )
+                                          ]
+                                      )
+                                  )
                               ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  Container(
-                                    color:Colors.red,
-                                    child: Text("Monthly",style: TextStyle(
-                                        color: Colors.white,
-                                        decorationColor: Colors.red
-                                    ),),
-                                  ),
-                                  Text("Weekly"),
-                                  Text("Daily")
-                                ],
+                              SizedBox(
+                                height: 25.0,
                               ),
-                            )
+                              Container(
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(convertUpper("Total Spendings"),style: TextStyle(color: Colors.white,fontSize: 20.0,),),
+                                    SizedBox(height: 5.0,),
+                                    priceRender(1245.15)
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 40.0,),
+                              Container(
+                                height: 270.0,
+                                child: ListView.builder(
+                                  itemBuilder: (context,index){
+                                    return cd.generateCard(dashList[index]);
+                                  },
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: dashList.length,
+                                ),
+                              )
+                            ],
                           )
                         ],
                       )
                   )
               ),
-              Container(
-                child: Text("Seach"),
+              SafeArea(
+                child: Center(
+                  child:new Container(
+                    width: 100.0,
+                    height: 100.0,
+                    decoration: new BoxDecoration(
+                      color: const Color(0xff7c94b6),
+                      image: new DecorationImage(
+                        image: new NetworkImage('https://ssmscdn.yp.ca/image/resize/bd725768-7ced-4803-a197-b606ae9bedf7/ypui-d-mp-pic-gal-lg/starbucks-other-10.jpg'),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: new BorderRadius.all(new Radius.circular(50.0)),
+                    ),
+                  ),
+                ),
               ),
               Container(
                 child: Text("Profile"),
