@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
 import "Dash.dart";
 import 'CardDesign.dart';
+import 'package:map_view/map_view.dart';
+import "googleMap.dart";
+import "details.dart";
+import 'mapbox.dart';
+import 'search.dart';
+
+var KEY = 'AIzaSyDrHKl8IxB4cGXIoELXQOzzZwiH1xtsRf4';
+
+Details d = new Details();
 
 void main(){
+  MapView.setApiKey(d.API_KEY);
   runApp(
     MaterialApp(
       home: Home(),
@@ -28,59 +38,56 @@ class HomeState extends State<Home> with TickerProviderStateMixin{
   List<Dash> dashList= [];
   CardDesign cd  = new CardDesign();
 
-  var list = [
-      {
-      "img":"https://cdn.geekwire.com/wp-content/uploads/2016/07/uber_shutterstock_326732741-630x420.jpg",
-        "name":"Uber Ride",
-        "price":650.0,
-        "approved":true
-      },
-      {
-        "img":"https://ssmscdn.yp.ca/image/resize/bd725768-7ced-4803-a197-b606ae9bedf7/ypui-d-mp-pic-gal-lg/starbucks-other-10.jpg",
-        "name":"Starbucks",
-        "price":434.0,
-        "approved":false
-      },
-      {
-        "img":"https://audimediacenter-a.akamaihd.net/system/production/media/63323/images/9287124de49431059fcf4d5f8ccca35aa3681434/A186768_overfull.jpg?1529417131",
-        "name":"Audi Ride",
-        "price":25.0,
-        "approved":false
-      },
-      {
-        "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9Sw-7YciVOwp-HPt0_tsxxCCav6GQRX7MKz3QL8706IeDBNpO",
-        "name":"Flutter",
-        "price":152.0,
-        "approved":true
-      },
-      {
-        "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLb5mOUtzV0ObqBVuAURSvPAsC27148aFdKGc6e6Z_Z78vmMWf",
-        "name":"Uber Ride",
-        "price":152.0,
-        "approved":false
-      },
-      {
-        "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9Sw-7YciVOwp-HPt0_tsxxCCav6GQRX7MKz3QL8706IeDBNpO",
-        "name":"Flutter",
-        "price":152.0,
-        "approved":true
-      },
-      {
-        "img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLb5mOUtzV0ObqBVuAURSvPAsC27148aFdKGc6e6Z_Z78vmMWf",
-        "name":"Uber Ride",
-        "price":152.0,
-        "approved":false
-      }
-  ];
+  var list = d.dummy;
+
+  var title;
+
+  setName(str){
+    setState(() {
+      title = str;
+    });
+  }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _controller = new TabController(length: 4, vsync: this,initialIndex: 0);
     _childController = new TabController(length: 3, vsync: this,initialIndex: 0);
+    setState(() {
+      title = "Home";
+    });
+    _controller.addListener((){
+
+      int index = _controller.index;
+      var name = "";
+      switch(index){
+        case 0:{
+          setName("Home");
+          return;
+        }
+        case 1:{
+          setName("Search");
+          return;
+        }
+        case 2:{
+          setName("Google Map");
+          return;
+        }
+        case 3:{
+          setName("MapBox");
+          return;
+        }
+        default:{
+          setName("Home");
+            return;
+        }
+      };
+    });
+
     dashList = [];
     // Generate List
-    for(var i=0; i<list.length; i++){
+    for(var i=0; i<d.dummy.length; i++){
       Dash d = new Dash();
       d.img = list[i]["img"];
       d.approved = list[i]["approved"];
@@ -112,12 +119,12 @@ class HomeState extends State<Home> with TickerProviderStateMixin{
               text: "SEARCH",
             ),
             Tab(
-              icon: Icon(Icons.account_circle),
-              text: "PROFILE",
+              icon: Icon(Icons.map),
+              text: "MAP",
             ),
             Tab(
-              icon: Icon(Icons.notifications),
-              text: "NOTIFICATIONS",
+              icon: Icon(Icons.map),
+              text: "MAPBOX",
             )
           ]
       ),
@@ -158,9 +165,11 @@ class HomeState extends State<Home> with TickerProviderStateMixin{
       bottomNavigationBar: SafeArea(child: bottomApppBar()),
       appBar: AppBar(
         elevation: 0.0,
+        title: Text(title),
         leading: InkResponse(
           onTap: (){},
           child: Icon(Icons.menu),
+
         ),
         actions: <Widget>[
           InkResponse(
@@ -247,28 +256,9 @@ class HomeState extends State<Home> with TickerProviderStateMixin{
                       )
                   )
               ),
-              SafeArea(
-                child: Center(
-                  child:new Container(
-                    width: 100.0,
-                    height: 100.0,
-                    decoration: new BoxDecoration(
-                      color: const Color(0xff7c94b6),
-                      image: new DecorationImage(
-                        image: new NetworkImage('https://ssmscdn.yp.ca/image/resize/bd725768-7ced-4803-a197-b606ae9bedf7/ypui-d-mp-pic-gal-lg/starbucks-other-10.jpg'),
-                        fit: BoxFit.cover,
-                      ),
-                      borderRadius: new BorderRadius.all(new Radius.circular(50.0)),
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                child: Text("Profile"),
-              ),
-              Container(
-                child: Text("Notification"),
-              )
+              Search(),
+              GoogleMap(),
+              MapBox()
             ],
           ),
     );
