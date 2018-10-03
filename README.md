@@ -8,8 +8,8 @@
     3.BoxDecoration - For boxshadow & rounded Image
 
 
+### Preview
 
-
-
+![Preview](http://demo.hupp.in/hupp-files/demo1.gif)
 
 
