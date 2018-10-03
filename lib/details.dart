@@ -1,5 +1,5 @@
 class Details{
-  String API_KEY = "AIzaSyDrHKl8IxB4cGXIoELXQOzzZwiH1xtsRf4";
+  String API_KEY = "XXXXXXXXXXXXXXX";
   List dummy = [
     {
       "img":"https://cdn.geekwire.com/wp-content/uploads/2016/07/uber_shutterstock_326732741-630x420.jpg",
