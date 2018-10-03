@@ -14,15 +14,15 @@
     5. MapBox map
 ### Preview
 
--  Home Screen
+
     ![Preview](http://demo.hupp.in/hupp-files/demo1.gif)
 
--  Google Map Screen
+
     ![Preview](http://demo.hupp.in/hupp-files/map1.png)
 
     ![Preview](http://demo.hupp.in/hupp-files/map3.png)
 
--  MapBox Screen
+
     ![Preview](http://demo.hupp.in/hupp-files/map2.png)
 
 
