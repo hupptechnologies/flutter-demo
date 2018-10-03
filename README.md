@@ -15,15 +15,15 @@
 ### Preview
 
 
-    ![Preview](http://demo.hupp.in/hupp-files/demo1.gif)
+![Preview](http://demo.hupp.in/hupp-files/demo1.gif)
 
 
-    ![Preview](http://demo.hupp.in/hupp-files/map1.png)
+![Preview](http://demo.hupp.in/hupp-files/map1.png)
 
-    ![Preview](http://demo.hupp.in/hupp-files/map3.png)
+![Preview](http://demo.hupp.in/hupp-files/map3.png)
 
 
-    ![Preview](http://demo.hupp.in/hupp-files/map2.png)
+![Preview](http://demo.hupp.in/hupp-files/map2.png)
 
 
 
