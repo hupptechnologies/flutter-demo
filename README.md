@@ -13,15 +13,15 @@
     4. Google map
     5. MapBox map
 ### Preview
-- Home Screen
+-  Home Screen
     ![Preview](http://demo.hupp.in/hupp-files/demo1.gif)
-- Google Map Screen
-    Open map when click on `Map` button.
+-  Google Map Screen
+    - Open map when click on `Map` button.
     ![Preview](http://demo.hupp.in/hupp-files/map1.png)
-    In Map screen on click add marker & stored.
+    - In Map screen on click add marker & stored.
     ![Preview](http://demo.hupp.in/hupp-files/map3.png)
-- MapBox Screen
-    Load Map & add marker
+-  MapBox Screen
+    - Load Map & add marker
     ![Preview](http://demo.hupp.in/hupp-files/map2.png)
 
 
