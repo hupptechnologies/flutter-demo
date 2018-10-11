@@ -9,8 +9,8 @@
 ###### Add Google Map key : `lib/details.dart` -> `API_KEY`
 
 ### Widgets
-    1.ListView
-    2.TabBar
+    1. ListView
+    2. TabBar
     3. BoxDecoration - For boxshadow & rounded Image
     4. Google map
     5. MapBox map
