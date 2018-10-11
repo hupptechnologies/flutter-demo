@@ -21,7 +21,7 @@
 [<img src="http://demo.hupp.in/hupp-files/map3.png" width="270" height="480" alt="Brand-first shopping design" align="">](http://demo.hupp.in/hupp-files/map3.png)
 
 
-[<img src="http://demo.hupp.in/hupp-files/map2.png" width="270" height="480" alt="Brand-first shopping design" align="left">](http://demo.hupp.in/hupp-files/map2.png)
+[<img src="http://demo.hupp.in/hupp-files/map2.png" width="270" height="480" alt="Brand-first shopping design" align="">](http://demo.hupp.in/hupp-files/map2.png)
 
 
 
