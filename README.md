@@ -14,14 +14,14 @@
     5. MapBox map
 ### Preview
 
-[<img src="http://demo.hupp.in/hupp-files/demo1.gif" width="270" height="480" alt="" >](http://demo.hupp.in/hupp-files/demo1.gif)
+[<p>Home Screen</p><img src="http://demo.hupp.in/hupp-files/demo1.gif" width="270" height="480" alt="" >](http://demo.hupp.in/hupp-files/demo1.gif)
 
 
-[<img src="http://demo.hupp.in/hupp-files/map1.png" width="270" height="480" alt="Brand-first shopping design" align="left">](http://demo.hupp.in/hupp-files/map1.png)
+[<p>Map (Google Map)</p><img src="http://demo.hupp.in/hupp-files/map1.png" width="270" height="480" alt="Brand-first shopping design" align="left">](http://demo.hupp.in/hupp-files/map1.png)
 [<img src="http://demo.hupp.in/hupp-files/map3.png" width="270" height="480" alt="Brand-first shopping design" align="">](http://demo.hupp.in/hupp-files/map3.png)
 
 
-[<img src="http://demo.hupp.in/hupp-files/map2.png" width="270" height="480" alt="Brand-first shopping design" align="">](http://demo.hupp.in/hupp-files/map2.png)
+[<p>Map (Mapbox Map)</p><img src="http://demo.hupp.in/hupp-files/map2.png" width="270" height="480" alt="Brand-first shopping design" align="">](http://demo.hupp.in/hupp-files/map2.png)
 
 
 
