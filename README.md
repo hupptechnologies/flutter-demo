@@ -1,8 +1,10 @@
 # Flutter demo
 
 ###### Design courtesy : https://dribbble.com/shots/3005605-Spending-App-Another-Exploration/attachments/628276
-###### Google Map plugin : https://pub.dartlang.org/packages/map_view
-###### MapBox plugin : https://pub.dartlang.org/packages/flutter_map
+
+### Plugin
+1. Google Map plugin : https://pub.dartlang.org/packages/map_view
+2. MapBox plugin : https://pub.dartlang.org/packages/flutter_map
 
 ###### Add Google Map key : `lib/details.dart` -> `API_KEY`
 
